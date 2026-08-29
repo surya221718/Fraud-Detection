@@ -232,12 +232,3 @@ Appropriate error responses are returned when backend processing fails.
 * Add automated unit and integration testing.
 * Deploy the application to a cloud platform.
 * Add centralized logging and application monitoring.
-
-## 👨‍💻 Author
-
-**Brahmajosyula Surya**
-
-B.Tech – Computer Science Engineering
-Vishnu Institute of Technology
-
-**GitHub:** https://github.com/surya221718
