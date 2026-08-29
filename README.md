@@ -1,6 +1,6 @@
 # 💳 Financial Fraud Detection Platform
 
-A real-time financial fraud detection application built with **Python, FastAPI, XGBoost, Streamlit, Docker, and Postman**. The system provides a REST API for processing transaction requests, validating inputs, generating fraud predictions, and returning actionable transaction decisions.
+A real-time financial fraud detection application built with **Python, FastAPI, XGBoost, Streamlit, Pandas, and Postman**. The system provides a REST API for processing transaction requests, validating inputs, generating fraud predictions, and returning actionable transaction decisions.
 
 ## 🚀 Features
 
@@ -10,15 +10,15 @@ A real-time financial fraud detection application built with **Python, FastAPI, 
 * Transaction feature engineering and model-aligned preprocessing
 * Fraud probability and threshold-based **ALLOW/BLOCK** decisions
 * Interactive **Streamlit** frontend
-* Backend–frontend communication through REST APIs
-* API testing and request validation using **Postman**
-* Docker-based multi-service setup using **Docker Compose**
+* Frontend–backend communication through REST APIs
+* API testing using **Postman**
+* Error handling for invalid requests and prediction failures
 
 ## 🏗️ System Architecture
 
 ```text
                 ┌─────────────────────┐
-                │   Streamlit UI      │
+                │    Streamlit UI     │
                 │  Transaction Input  │
                 └──────────┬──────────┘
                            │
@@ -41,7 +41,7 @@ A real-time financial fraud detection application built with **Python, FastAPI, 
                            │
                            ▼
                 ┌─────────────────────┐
-                │ API Response        │
+                │    API Response     │
                 │                     │
                 │ Fraud Probability   │
                 │ ALLOW / BLOCK       │
@@ -50,18 +50,16 @@ A real-time financial fraud detection application built with **Python, FastAPI, 
 
 ## 🛠️ Technology Stack
 
-| Category         | Technology     |
-| ---------------- | -------------- |
-| Language         | Python         |
-| Backend          | FastAPI        |
-| API Validation   | Pydantic       |
-| Machine Learning | XGBoost        |
-| Data Processing  | Pandas         |
-| Frontend         | Streamlit      |
-| API Testing      | Postman        |
-| Containerization | Docker         |
-| Orchestration    | Docker Compose |
-| Model Loading    | Joblib         |
+| Category         | Technology |
+| ---------------- | ---------- |
+| Language         | Python     |
+| Backend          | FastAPI    |
+| API Validation   | Pydantic   |
+| Machine Learning | XGBoost    |
+| Data Processing  | Pandas     |
+| Frontend         | Streamlit  |
+| API Testing      | Postman    |
+| Model Loading    | Joblib     |
 
 ## 📂 Project Structure
 
@@ -71,8 +69,6 @@ financial-fraud-detection/
 ├── app.py
 ├── Dashboard.py
 ├── Best Model.pkl
-├── docker-compose.yml
-├── Dockerfile
 ├── requirements.txt
 └── README.md
 ```
@@ -92,7 +88,7 @@ The frontend sends the transaction details to the FastAPI `/predict` endpoint as
 
 ### 2. Request Validation
 
-FastAPI uses a Pydantic model to validate the incoming transaction request and ensure the required fields have the expected data types.
+FastAPI uses a **Pydantic model** to validate incoming transaction requests and ensure the required fields have the expected data types.
 
 ### 3. Feature Processing
 
@@ -119,7 +115,7 @@ Compare with threshold
 
 ### 5. API Response
 
-The API returns a structured JSON response containing:
+The API returns a structured JSON response containing the fraud status, probability, and recommended action.
 
 ```json
 {
@@ -174,36 +170,11 @@ The REST API was tested using **Postman** to verify:
 
 * JSON request payloads
 * Required transaction fields
-* Input validation
+* Request validation
 * Request limits
 * API response structure
 * Prediction results
 * Error handling
-
-## 🐳 Running with Docker
-
-Clone the repository:
-
-```bash
-git clone <your-repository-url>
-cd financial-fraud-detection
-```
-
-Build and start the services:
-
-```bash
-docker compose up --build
-```
-
-The FastAPI backend will be available at:
-
-```text
-http://localhost:8000
-```
-
-The interactive API documentation can be accessed through FastAPI's automatically generated documentation.
-
-The Streamlit dashboard can be accessed through the configured Streamlit port.
 
 ## 💻 Running Locally
 
@@ -225,25 +196,33 @@ In another terminal, start the Streamlit dashboard:
 streamlit run Dashboard.py
 ```
 
+The FastAPI API will be available at:
+
+```text
+http://localhost:8000
+```
+
+FastAPI also provides interactive API documentation through its built-in documentation interface.
+
 ## 🔐 Error Handling
 
-The backend includes error handling for situations such as:
+The backend handles situations such as:
 
 * Missing model files
 * Invalid transaction requests
 * Prediction failures
 * API communication errors
 
-Appropriate HTTP responses are returned when backend processing fails.
+Appropriate error responses are returned when backend processing fails.
 
 ## 🎯 Project Highlights
 
 * Designed a **RESTful backend architecture** using FastAPI.
-* Implemented **structured request validation** with Pydantic.
-* Integrated a trained machine learning model into an API-based application.
+* Implemented **structured request validation** using Pydantic.
+* Integrated a trained **XGBoost model** into an API-based application.
 * Developed **frontend–backend communication** using HTTP requests.
-* Containerized application services using **Docker and Docker Compose**.
-* Tested API functionality using **Postman**.
+* Tested REST API functionality using **Postman**.
+* Implemented **threshold-based transaction decisions** and fraud probability reporting.
 
 ## 🔮 Future Improvements
 
@@ -252,7 +231,7 @@ Appropriate HTTP responses are returned when backend processing fails.
 * Implement API rate limiting and monitoring.
 * Add automated unit and integration testing.
 * Deploy the application to a cloud platform.
-* Add logging and application monitoring.
+* Add centralized logging and application monitoring.
 
 ## 👨‍💻 Author
 
@@ -261,5 +240,4 @@ Appropriate HTTP responses are returned when backend processing fails.
 B.Tech – Computer Science Engineering
 Vishnu Institute of Technology
 
-[GitHub](https://github.com/surya221718) • [LinkedIn](https://www.linkedin.com/)
-
+**GitHub:** https://github.com/surya221718
